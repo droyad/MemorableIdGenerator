@@ -49,4 +49,4 @@ jobs:
 
       - name: Push NuGet packages to GitHub Packages ⬆️
         working-directory: artifacts
-        run: dotnet nuget push MemorableIdGenerator.$GitVersion_SemVer.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push MemorableIdGenerator.${{ env.GitVersion_SemVer }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
