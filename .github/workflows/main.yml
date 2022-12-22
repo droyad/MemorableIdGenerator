@@ -36,7 +36,7 @@ jobs:
             echo "SemVer: $env:GitVersion_SemVer"
           
       - name: Build
-        run: dotnet build -c Release --no-restore /p:Version=$env:GitVersion_SemVer
+        run: dotnet build -c Release /p:Version=$env:GitVersion_SemVer
         working-directory: src
 
       - name: Test
