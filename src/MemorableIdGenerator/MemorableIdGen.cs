@@ -90,7 +90,7 @@ public class MemorableIdGen
     /// </summary>
     /// <param name="maxLength"></param>
     /// <returns></returns>
-    public MemorableIdGen RestrictLengthTo(int maxLength)
+    public MemorableIdGen LimitLengthTo(int maxLength)
     {
         _maxLength = maxLength;
         return this;
