@@ -33,10 +33,10 @@ jobs:
 
       - name: Display SemVer
         run: |
-            echo "SemVer: $env:GitVersion_SemVer"
+            echo "SemVer: $GitVersion_SemVer"
           
       - name: Build
-        run: dotnet build -c Release /p:Version=$env:GitVersion_SemVer
+        run: dotnet build -c Release /p:Version=$GitVersion_SemVer
         working-directory: src
 
       - name: Test
@@ -44,9 +44,9 @@ jobs:
         working-directory: src
 
       - name: Pack
-        run: dotnet pack --no-build -c Release -o ../artifacts /p:Version=$env:GitVersion_SemVer
+        run: dotnet pack --no-build -c Release -o ../artifacts /p:Version=$GitVersion_SemVer
         working-directory: src
 
       - name: Push NuGet packages to GitHub Packages ⬆️
         working-directory: artifacts
-        run: dotnet nuget push MemorableIdGenerator.$env:GitVersion_SemVer.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push MemorableIdGenerator.$GitVersion_SemVer.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
