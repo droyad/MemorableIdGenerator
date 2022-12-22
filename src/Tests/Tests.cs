@@ -55,8 +55,8 @@ public class Tests
             .Select(g => g.Key)
             .ToArray();
         
-        var distinct = MemorableIdGen.LoadList(list).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(s => s);
-        TestContext.Write(string.Join(Environment.NewLine, distinct));
+        //var distinct = MemorableIdGen.LoadList(list).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(s => s);
+        //TestContext.Write(string.Join(Environment.NewLine, distinct));
         
         duplicates.Should().BeEmpty();
     }

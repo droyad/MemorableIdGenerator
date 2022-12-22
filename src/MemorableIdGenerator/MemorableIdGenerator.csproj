@@ -10,7 +10,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageProjectUrl>https://github.com/droyad/MemorableIdGenerator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/droyad/MemorableIdGenerator</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/droyad/Assent/blob/master/LICENCE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   
   <ItemGroup>
