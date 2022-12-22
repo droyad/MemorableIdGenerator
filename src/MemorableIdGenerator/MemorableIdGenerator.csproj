@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>MemorableIdGenerator</AssemblyName>
+    <PackageId>MemorableIdGenerator</PackageId>
+    <RootNamespace>MemorableIdGenerator</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageProjectUrl>https://github.com/droyad/MemorableIdGenerator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/droyad/MemorableIdGenerator</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/droyad/Assent/blob/master/LICENCE.md</PackageLicenseUrl>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tests" />
+    <EmbeddedResource Include="Lists\*.txt" />
+  </ItemGroup>
+
+</Project>

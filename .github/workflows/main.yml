@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Avoid pre-populating the NuGet package cache
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # all
+
+      - name: Setup .NET 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: '5.x'
+
+      - name: Run GitVersion
+        uses: gittools/actions/gitversion/execute@v0.9.7
+
+      - name: Display SemVer
+        run: |
+            echo "SemVer: $env:GitVersion_SemVer"
+          
+      - name: Build
+        run: dotnet build -c Release --no-restore /p:Version=$env:GitVersion_SemVer
+        working-directory: src
+
+      - name: Test
+        run: dotnet test --no-build -c Release --logger trx --logger "console;verbosity=detailed" --results-directory ../artifacts
+        working-directory: src
+
+      - name: Pack
+        run: dotnet pack --no-build -c Release -o ../artifacts /p:Version=$env:GitVersion_SemVer
+        working-directory: src
+
+      - name: Push NuGet packages to GitHub Packages ⬆️
+        working-directory: artifacts
+        run: dotnet nuget push MemorableIdGenerator.$env:GitVersion_SemVer.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
