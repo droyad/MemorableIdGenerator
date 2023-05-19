@@ -34,7 +34,6 @@ Armadillo
 ArrowCrab
 AsiaticJackal
 Asp
-Ass
 Avocet
 Axolotl
 AyeAye
@@ -949,7 +948,6 @@ Terrier
 Tetra
 ThornyDevil
 Thrasher
-Thrush
 Tick
 Tiffany
 Tiger
