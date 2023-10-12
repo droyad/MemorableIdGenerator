@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 namespace MemorableIdGenerator;
 
 /// <summary>
@@ -28,7 +30,7 @@ public class MemorableIdGen
     private int _maxLength = int.MaxValue;
     private int _maxAttempts = 100;
     private bool _allowDuplicates;
-    private readonly HashSet<string> _previouslyGenerated = new();
+    private readonly ConcurrentBag<string> _previouslyGenerated = new();
 
     public MemorableIdGen(params WordList[] lists)
     {
@@ -144,10 +146,8 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result))
+            if (result.Length < _maxLength && !IsDuplicate(result))
             {
-                if(!_allowDuplicates)
-                    _previouslyGenerated.Add(result);
                 return result;
             }
         }
@@ -169,10 +169,8 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result) && validate(result))
+            if (result.Length < _maxLength && !IsDuplicate(result) && validate(result))
             {
-                if(!_allowDuplicates)
-                    _previouslyGenerated.Add(result);
                 return result;
             }
         }
@@ -194,16 +192,29 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result) && await validate(result))
+            if (result.Length < _maxLength && !IsDuplicate(result) && await validate(result))
             {
-                if(!_allowDuplicates)
-                    _previouslyGenerated.Add(result);
                 return result;
             }
         }
 
         throw new Exception(
             "The maximum number of attempts has been exceeded, increase the MaxLength value, reduce the number of lists used or change it so that the validation function passes more values.");
+    }
+
+    bool IsDuplicate(string value)
+    {
+        if (_allowDuplicates)
+            return false;
+            
+        lock (_previouslyGenerated)
+        {
+            if (_previouslyGenerated.Contains(value))
+                return true;
+            
+            _previouslyGenerated.Add(value);
+            return false;
+        }
     }
 
     string GetWord(WordList list)
