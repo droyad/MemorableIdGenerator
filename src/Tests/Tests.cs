@@ -30,7 +30,7 @@ public class Tests
             .JoiningWith("-!")
             .Generate()
             .Should()
-            .Be("Viscous-!Khaki-!Sparrow");
+            .Be("Viscous-!Khaki-!SpadefootToad");
     }
 
     [Test]
