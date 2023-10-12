@@ -32,6 +32,51 @@ public class Tests
             .Should()
             .Be("Viscous-!Khaki-!Sparrow");
     }
+
+    [Test]
+    public void DuplicatesAreNotReturned()
+    {
+        var results = new List<string>();
+
+        var generator = MemorableIdGen.With(WordList.Colours)
+            .UsingSeed(33);
+
+        var action = () =>
+        {
+            for (var x = 0; x < 60; x++)
+                results.Add(generator.Generate());
+        };
+
+        action.Should()
+            .Throw<Exception>()
+            .WithMessage(
+                "The maximum number of attempts has been exceeded, increase the MaxLength value, or reduce the number of lists used");
+
+        results.Should().NotBeEmpty();
+        
+        results.GroupBy(r => r)
+            .Where(r => r.Count() > 1)
+            .Should()
+            .BeEmpty();
+    }
+    
+    [Test]
+    public void DuplicatesAreReturnedIfAllowed()
+    {
+        var results = new List<string>();
+
+        var generator = MemorableIdGen.With(WordList.Colours)
+            .UsingSeed(33)
+            .AllowDuplicates();
+
+        for (var x = 0; x < 60; x++) // Word list has less than 60
+            results.Add(generator.Generate());
+
+        results.GroupBy(r => r)
+            .Where(r => r.Count() > 1)
+            .Should()
+            .NotBeEmpty();
+    }
     
     [Test]
     public void CanGenerateManyUnique()

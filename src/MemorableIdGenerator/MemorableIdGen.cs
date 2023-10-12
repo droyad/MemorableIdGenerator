@@ -27,6 +27,8 @@ public class MemorableIdGen
     private string _joiner = "";
     private int _maxLength = int.MaxValue;
     private int _maxAttempts = 100;
+    private bool _allowDuplicates;
+    private readonly HashSet<string> _previouslyGenerated = new();
 
     public MemorableIdGen(params WordList[] lists)
     {
@@ -119,6 +121,16 @@ public class MemorableIdGen
             _rnd = new Random(seed);
         return this;
     }
+    
+    /// <summary>
+    /// Allows duplicate ids to be generated
+    /// </summary>
+    /// <returns></returns>
+    public MemorableIdGen AllowDuplicates()
+    {
+        _allowDuplicates = true;
+        return this;
+    }
 
     /// <summary>
     /// Generates an identifier using the settings specified previously
@@ -132,8 +144,12 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength)
+            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result))
+            {
+                if(!_allowDuplicates)
+                    _previouslyGenerated.Add(result);
                 return result;
+            }
         }
 
         throw new Exception(
@@ -153,8 +169,12 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength && validate(result))
+            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result) && validate(result))
+            {
+                if(!_allowDuplicates)
+                    _previouslyGenerated.Add(result);
                 return result;
+            }
         }
 
         throw new Exception(
@@ -174,8 +194,12 @@ public class MemorableIdGen
         for (var x = 0; x < _maxAttempts; x++)
         {
             var result = string.Join(_joiner, _lists.Select(GetWord));
-            if (result.Length < _maxLength && await validate(result))
+            if (result.Length < _maxLength && !_previouslyGenerated.Contains(result) && await validate(result))
+            {
+                if(!_allowDuplicates)
+                    _previouslyGenerated.Add(result);
                 return result;
+            }
         }
 
         throw new Exception(
