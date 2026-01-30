@@ -40,8 +40,8 @@ MemorableIdGen.DescriptiveColourfulAnimal().WithSeed(33).Generate();
 
 ## Number of Values
 
-- Adjectives: 2750
-- Animals: 1058
+- Adjectives: 2749
+- Animals: 1056
 - Colours: 100
 - Foods: 98
 - Objects: 307
