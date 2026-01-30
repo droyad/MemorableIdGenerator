@@ -3,7 +3,7 @@ namespace MemorableIdGenerator;
 public enum WordList
 {
     /// <summary>
-    /// Animals word list (1056 words)
+    /// Animals word list (1049 words)
     /// </summary>
     Animals,
     /// <summary>
@@ -11,7 +11,7 @@ public enum WordList
     /// </summary>
     Colours,
     /// <summary>
-    /// Adjectives word list (2749 words)
+    /// Adjectives word list (2739 words)
     /// </summary>
     Adjectives,
     /// <summary>
@@ -19,7 +19,7 @@ public enum WordList
     /// </summary>
     Foods,
     /// <summary>
-    /// Objects word list (307 words)
+    /// Objects word list (302 words)
     /// </summary>
     Objects,
     /// <summary>

@@ -30,7 +30,7 @@ public class Tests
             .JoiningWith("-!")
             .Generate()
             .Should()
-            .Be("Vigorous-!Sapphire-!SpadefootToad");
+            .Be("Vigilant-!Sapphire-!SpadefootToad");
     }
 
     [Test]

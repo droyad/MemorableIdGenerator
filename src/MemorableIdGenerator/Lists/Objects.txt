@@ -21,7 +21,6 @@ Block
 Board
 Boat
 Bolt
-Bomb
 Book
 Bottle
 Bowl
@@ -102,7 +101,6 @@ Grate
 Grid
 Grill
 Grip
-Gun
 Hammer
 Handle
 Harp
@@ -201,7 +199,6 @@ Ring
 Rivet
 Robe
 Rock
-Rod
 Rope
 Rotor
 Ruler
@@ -214,7 +211,6 @@ Screw
 Scroll
 Seal
 Seat
-Shaft
 Shard
 Sheet
 Shell
@@ -262,7 +258,6 @@ Tire
 Tissue
 Toaster
 Toggle
-Tool
 Torch
 Towel
 Tower

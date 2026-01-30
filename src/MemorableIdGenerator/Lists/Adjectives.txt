@@ -483,7 +483,6 @@ Common
 Communal
 Communicable
 Communicative
-Communist
 Compact
 Comparable
 Comparative
@@ -742,7 +741,6 @@ Dogmatic
 Dollish
 Domed
 Domestic
-Dominant
 Dorsal
 Doting
 Double
@@ -873,7 +871,6 @@ Equidistant
 Equitable
 Equivalent
 Erasable
-Erect
 Eroding
 Esoteric
 Essential
@@ -967,7 +964,6 @@ Faraway
 Farsighted
 Fascinated
 Fascinating
-Fascistic
 Fashionable
 Fast
 Fastest
@@ -1363,7 +1359,6 @@ International
 Interpersonal
 Interracial
 Intestinal
-Intimate
 Intravenous
 Intrepid
 Introductory
@@ -1741,7 +1736,6 @@ Optimal
 Optimistic
 Optional
 Opulent
-Oral
 Orange
 Ordinary
 Organic
@@ -1785,7 +1779,6 @@ Parking
 Particular
 Party
 Passing
-Passionate
 Passive
 Past
 Pastoral
@@ -2090,7 +2083,6 @@ Replicable
 Reported
 Representative
 Reproductive
-Republican
 Reputable
 Reputed
 Rescued
@@ -2369,7 +2361,6 @@ Stereophonic
 Sticky
 Stiff
 Still
-Stimulating
 Stock
 Stoic
 Stout
@@ -2733,7 +2724,6 @@ Worthy
 Written
 Wry
 Yearly
-Yearning
 Yellow
 Yielding
 Young
