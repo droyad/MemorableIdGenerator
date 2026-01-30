@@ -19,7 +19,7 @@ public class Tests
             .UsingSeed(33)
             .Generate()
             .Should()
-            .Be("WhiteLangur");
+            .Be("VermillionLangur");
     }
     
     [Test]
@@ -30,7 +30,7 @@ public class Tests
             .JoiningWith("-!")
             .Generate()
             .Should()
-            .Be("Viscous-!Khaki-!SpadefootToad");
+            .Be("Vigorous-!Sapphire-!SpadefootToad");
     }
 
     [Test]
@@ -43,7 +43,7 @@ public class Tests
 
         var action = () =>
         {
-            for (var x = 0; x < 60; x++)
+            for (var x = 0; x < 110; x++)
                 results.Add(generator.Generate());
         };
 

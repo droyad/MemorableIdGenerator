@@ -50,6 +50,7 @@ public class MemorableIdGen
 
     /// <summary>
     /// Generates a 2 word identifier in the format [Adjective][Animal]
+    /// 2.9 million combinations
     /// Example: "HappyPenguin"
     /// </summary>
     /// <returns></returns>
@@ -58,6 +59,7 @@ public class MemorableIdGen
 
     /// <summary>
     /// Generates a 2 word identifier in the format [Colour][Animal]
+    /// 100,000 combinations
     /// Example: "BlueDuck"
     /// </summary>
     /// <returns></returns>
@@ -65,7 +67,26 @@ public class MemorableIdGen
         => new MemorableIdGen(WordList.Colours, WordList.Animals);
 
     /// <summary>
+    /// Generates a 2 word identifier in the format [Colour][Object]
+    /// 30,000 combinations
+    /// Example: "GreenPencil"
+    /// </summary>
+    /// <returns></returns>
+    public static MemorableIdGen ColourfulObject()
+        => new MemorableIdGen(WordList.Colours, WordList.Objects);
+
+    /// <summary>
+    /// Generates a 2 word identifier in the format [Colour][Shape][Object]
+    /// 2.7 million combinations
+    /// Example: "GreenCubePencil"
+    /// </summary>
+    /// <returns></returns>
+    public static MemorableIdGen ColourfulShapeObject()
+        => new MemorableIdGen(WordList.Colours, WordList.Shapes, WordList.Objects);
+
+    /// <summary>
     /// Generates a 3 word identifier in the format [Adjective][Colour][Animal]
+    /// 290 million combinations
     /// Example: ExpressiveGreenEmu
     /// </summary>
     /// <returns></returns>

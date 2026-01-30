@@ -5,5 +5,9 @@ public enum WordList
     Animals,
     Colours,
     Adjectives,
-    Foods
+    Foods,
+    Objects,
+    Nature,
+    Shapes,
+    Materials
 }
